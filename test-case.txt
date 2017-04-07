@@ -1,0 +1,55 @@
+Test Case 1:
+
+grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh 
+
+test directory is as follows:
+test/e
+test/g
+
+starting at test/
+
+Expected Results:
+
+# EVIL, GOOD, EVIL...
+
+>cd e
+>grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh
+# STATE="EVIL"
+ddc5f108a171158d47af2e31c093682053df81e002660d5c30ae08ab52097964  self-modify-switcher.sh
+>grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh
+# STATE="GOOD"
+383c1ade4205f4cfbf564c11cd8783a88911c05f650b74aabaa7d5f3d8fa6fce  self-modify-switcher.sh
+>grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh
+# STATE="EVIL"
+bd7f48a673fb38505f22a8956710ca883249a8cc95d208b0441bf8dcd0a65285  self-modify-switcher.sh
+>grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh
+# STATE="EVIL"
+bd7f48a673fb38505f22a8956710ca883249a8cc95d208b0441bf8dcd0a65285  self-modify-switcher.sh
+>grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh
+# STATE="EVIL"
+bd7f48a673fb38505f22a8956710ca883249a8cc95d208b0441bf8dcd0a65285  self-modify-switcher.sh
+>grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh
+# STATE="EVIL"
+bd7f48a673fb38505f22a8956710ca883249a8cc95d208b0441bf8dcd0a65285  self-modify-switcher.sh
+
+>cd ..
+
+# GOOD, EVIL, GOOD...
+
+>cd g
+>grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh
+# STATE="GOOD"
+18189ca24ea8cf64fd1ec5aea762152d9f8d678a61e9a26bdc03cf153b608819  self-modify-switcher.sh
+>grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh
+# STATE="EVIL"
+083a0bb608d4ccd8dc65c8b2721fff2144a3abf7e37014a6e4c5b0204a094ddc  self-modify-switcher.sh
+>grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh
+# STATE="GOOD"
+b55205bd0d284308f641d8c5357ead20c8cdaa0cd2100991cefd055064f7e6fc  self-modify-switcher.sh
+>grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh
+# STATE="GOOD"
+b55205bd0d284308f641d8c5357ead20c8cdaa0cd2100991cefd055064f7e6fc  self-modify-switcher.sh
+>grep 'STATE=' self-modify-switcher.sh && shasum -a 256 self-modify-switcher.sh && ./self-modify-switcher.sh
+# STATE="GOOD"
+b55205bd0d284308f641d8c5357ead20c8cdaa0cd2100991cefd055064f7e6fc  self-modify-switcher.sh
+>
